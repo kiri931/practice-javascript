@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>星座判定</title>
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <h1>生年月日で星座を判定しよう</h1>
+
+    <label for="month">月:</label>
+    <input type="number" id="month" placeholder="例: 1" min="1" max="12">
+
+    <label for="day">日:</label>
+    <input type="number" id="day" placeholder="例: 1" min="1" max="31">
+
+    <button onclick="getZodiacSign()">星座を表示</button>
+
+    <p id="result"></p>
+</body>
+</html>
