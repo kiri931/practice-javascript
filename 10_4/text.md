@@ -150,6 +150,7 @@ console.log( a , b , "c" )
 ## 入力規則を作成しよう
 JavaScriptを使用して、入力規則を作成しよう。
 実は、いろいろな方法がありますが、最も安直な方法で実装します。
+### 最も安直な方法
 ~~~js
 function errorInput(){
     const month = document.getElementById("month").value.trim();
@@ -168,7 +169,11 @@ if文での分岐です。記述方法がC言語と同じですので、詳し�
 
 
 これで、一見するとイケてるような気がしますが、実は、適当な文字を打っても実行できてしまいます。
-そのため、次は、htmlで入力のルールを作成することにします。以下のように書き換えてください。
+そのため、次は、htmlで入力のルールを作成することにします。
+
+### htmlでルールを追加する
+
+次のプログラムを記述してください
 
 ~~~html
 <!DOCTYPE html>
@@ -182,13 +187,52 @@ if文での分岐です。記述方法がC言語と同じですので、詳し�
         <h1>生年月日の入力</h1>
 
         <label for="month">月:</label>
-        <input type="number" id="month" placeholder="例: 1" min="1" max="12">
+        <input type="number" id="month" placeholder="月を入力してください" min="1" max="12">
         <label for="day">日:</label>
-        <input type="number" id="day" placeholder="例: 1" min="1" max="31">
+        <input type="number" id="day" placeholder="日を入力してください" min="1" max="31">
         
         <button onclick="errorInput()">入力</button>
     </body>
 </html>
 ~~~
 
-新しく出てきたタグは、
+新しく`label`タグを追加していますが、なにか別のタグと一緒に使うタグで、ボタンや入力ボックスなどと一緒に使うことができます。
+`for`で記述されているidを持つタグにカーソルを移動します。
+
+`input`タグに新たな属性を加えました。
+
+**type**属性は、その入力ボックスに記述できる値を設定しています。*number*であれば、数字以外を入力できないようにしています。
+
+また、入力規則を設定できます。*max*と*min*属性で、最小値と最大値を設定しています。
+
+このように、HTMLのみで、入力ルールを設けて、値を制御することができます。
+
+### 入力する方法を変える
+
+先程の方法は、大前提入力ボックスを使用する方法でしたので、キーボードで入力する前提でした。
+
+しかし、キーボードで入力することは、スマートフォンなどでは、煩わしい方法です。また、HP作成の際に入力規則をつけ忘れるなんて、ありそうな話ですよね。
+
+そこで、別の入力方式を実装します。
+
+**ドロップダウンメニュー**
+
+クリックすると、選択肢が複数出てきて、その中から選択するという方式です。
+
+次のコードを今のindex.htmlに追加で記述してみてください。
+
+~~~html
+<label for="pet-select">あなたの飼いたいペットは？:</label>
+
+<select name="pets" id="pet-select">
+  <option value="">選択してください</option>
+  <option value="dog">犬</option>
+  <option value="cat">猫</option>
+  <option value="hamster">ハムスター</option>
+  <option value="parrot">インコ</option>
+  <option value="spider">蜘蛛</option>
+  <option value="goldfish">金魚</option>
+</select>
+~~~
+
+このように、**select**タグと**option**タグで追加することができます。
