@@ -7,8 +7,12 @@
     </head>
     <body>
         <h1>生年月日の入力</h1>
-        <input id="month" placeholder="月を入力してください">
-        <input id="day" placeholder="日を入力してください">
+
+        <label for="month">月:</label>
+        <input type="number" id="month" placeholder="月を入力してください" min="1" max="12">
+        <label for="day">日:</label>
+        <input type="number" id="day" placeholder="日を入力してください" min="1" max="31">
+        
         <button onclick="errorInput()">入力</button>
     </body>
 </html>

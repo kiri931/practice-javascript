@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>text.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<blockquote>
+<p>10月4日</p>
+</blockquote>
+<h1 id=""></h1>
+<h2 id="%E5%89%8D%E5%9B%9E%E3%81%AE%E5%BE%A9%E7%BF%92">前回の復習</h2>
+<p>前回は、生年月日を入力するためのページとエラー確認用のログの表示ボタンを作成しました。</p>
+<h3 id="indexhtml%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">index.htmlについて</h3>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"ja"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>生年月日入力<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"main.js"</span> <span class="hljs-attr">defer</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>生年月日の入力<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"month"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"月を入力してください"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"day"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"日を入力してください"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"errorInput()"</span>&gt;</span>入力<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<ul>
+<li>
+<p><strong>html</strong></p>
+<p><code> lang=&quot;ja&quot;</code>の部分の意味は、このhtmlファイルは日本語ベース「ja」で書かれていますよ</p>
+<ul>
+<li>
+<p><strong>head</strong>
+基本的に本文に表示しない情報を記述します</p>
+<ul>
+<li>
+<p><em>meta</em>
+メタ情報を記述します。
+この場合、文字エンコード（文字の保存形式のようなもの）をUTF-8にしますという内容です。</p>
+</li>
+<li>
+<p><em>title</em>
+ブラウザ上部にタブページの中にタイトルが記述されている</p>
+</li>
+<li>
+<p><em>script</em>
+JavaScriptを使用したい場合に記述する。<code>src=&quot;&quot;</code>は ソース(source)の略で、ファイルの場所を示す。同一のフォルダ内にソースファイルがある場合は、ファイル名だけを記述したらよい。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>body</strong>
+ウェブページに表示される部分です。</p>
+<ul>
+<li><em>h1</em>
+表題１のスタイルを適用しますよ。ちなみに、cssでスタイルは変更できます。</li>
+<li><em>input</em>
+入力用の箱(input box)を表示します
+<code>id</code>はタグに任意のIDを持たせることで、JavaScriptやCSSファイルから操作するときの目印にします。
+<code>placeholder</code>は何も入力されていない状態で、表示する言葉を記述します。</li>
+<li><em>button</em>
+ボタンを表示します
+<code>onclick</code>はクリックされたときそのあとに記述されている関数を実行します。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="mainjs%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">main.jsについて</h3>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">errorInput</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"month"</span>).value)
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"day"</span>).value)
+
+    <span class="hljs-keyword">const</span> month = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"month"</span>).value;
+    <span class="hljs-keyword">const</span> day = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"day"</span>).value
+    
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"month:"</span>,month,<span class="hljs-string">"day:"</span>,day)
+
+}
+<span class="hljs-comment">//document.getElementById("month")はタグを確認するだけ</span>
+<span class="hljs-comment">//valueはそのタグの値を示す</span>
+
+<span class="hljs-comment">/*
+javaScriptのプログラムとHTMLファイルはどこで対応しているか
+タグについているIDで紐づく
+タグの中にある付加情報のことを属性という
+console.log()はc言語でいうところのprintf();です
+*/</span>
+</div></code></pre>
+<p>main.jsには一つの関数しか記述されていません。関数とは、functionで始まる小さなプログラムです。</p>
+<p>今回の場合は、<code>function errorInput()</code>がそれに当たります。
+<code>errorInput()</code>の役割は、入力ボックスに値が入っている場合、それを表示します。
+プログラムの中身を見ていきましょう。</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"month"</span>).value)
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"day"</span>).value)
+</div></code></pre>
+<p>一文が長いプログラムだと、少し読み取りづらいですが、２つに分けて考えましょう。</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">console</span>.log()
+<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"month"</span>).value
+</div></code></pre>
+<p><code>console.log()</code>は、ブラウザのコンソール画面に「( )」の中に記述されている内容を表示します。</p>
+<p><code>document.getElementById(&quot;month&quot;).value</code>は、</p>
+<p><code>document</code>はhtmlで記述されている文章を指します。</p>
+<p><code>getElementById(&quot;month&quot;)</code>はmonthという<code>id</code>のタグを探す命令</p>
+<p><code>value</code>は、そのタグが保持している値を読み取る命令</p>
+<p>そのため、</p>
+<p><code>console.log(document.getElementById(&quot;month&quot;).value)</code></p>
+<p>これを読み取ると、
+<strong>今書いているHTMLファイルの<code>id</code>がmonthとなっているタグの値をコンソール画面に表示しなさい</strong>
+という命令です。</p>
+<p><span style="color:red">しかし、一般的にプログラミングにおいて、分割した方が読みやすくなることが多く、今回も分割のために次のような記述をしています。</span></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> month = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"month"</span>).value;
+<span class="hljs-keyword">const</span> day = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"day"</span>).value
+    
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"month:"</span>,month,<span class="hljs-string">"day:"</span>,day)
+</div></code></pre>
+<p>これは、先ほど言ったタグの値を<strong>定数</strong>に代入することで、分割しています。</p>
+<p><code>const month</code>はmonthという定数を準備しています。<code>=</code>でこの定数にタグの値を代入しています。</p>
+<p>こうすることで、monthの値をコンソールに表示するためには<code>console.log(month)</code>で表示することができるようになります。</p>
+<h3 id="consolelog">console.log()</h3>
+<p>ここで、<code>console.log()</code>の特徴を知っておきましょう。</p>
+<p>これは、先ほど言ったように「( )」の情報をコンソールに表示するための関数です。</p>
+<p>そのため、中に、変数や定数、文字列を記述することで表示することができます。</p>
+<p>さらに、今回のように、定数、変数、文字列を同時に表示することも可能であり、</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> a = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">let</span> b = <span class="hljs-number">15</span>;
+
+<span class="hljs-built_in">console</span>.log( a , b , <span class="hljs-string">"c"</span> )
+</div></code></pre>
+<p>のように記述することができます。ただし、この<code>c</code>は文字列ですので、そのまま<code>c</code>が出力されます。
+そのため、出力結果は<code>10 15 c</code>となります。</p>
+<h2 id="%E5%85%A5%E5%8A%9B%E8%A6%8F%E5%89%87%E3%82%92%E4%BD%9C%E6%88%90%E3%81%97%E3%82%88%E3%81%86">入力規則を作成しよう</h2>
+<p>JavaScriptを使用して、入力規則を作成しよう。
+実は、いろいろな方法がありますが、最も安直な方法で実装します。</p>
+<h3 id="%E6%9C%80%E3%82%82%E5%AE%89%E7%9B%B4%E3%81%AA%E6%96%B9%E6%B3%95">最も安直な方法</h3>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">errorInput</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-keyword">const</span> month = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"month"</span>).value.trim();
+    <span class="hljs-keyword">const</span> day = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"day"</span>).value.trim();
+    <span class="hljs-keyword">if</span>(month&lt;<span class="hljs-number">1</span> || month&gt;<span class="hljs-number">12</span>){
+        alert(<span class="hljs-string">"適切な値ではありません"</span>);
+        <span class="hljs-keyword">return</span>
+    }
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Month:"</span>, month, <span class="hljs-string">"Day:"</span>, day);
+}
+</div></code></pre>
+<p>if文での分岐です。記述方法がC言語と同じですので、詳しくは説明しませんが、これで、異常値をはじけます。</p>
+<p><code>alert()</code>はポップアップ警告を出します。この警告は、リアクションをするまで、他の操作を一時的に中断します。</p>
+<p>これで、一見するとイケてるような気がしますが、実は、適当な文字を打っても実行できてしまいます。
+そのため、次は、htmlで入力のルールを作成することにします。</p>
+<h3 id="html%E3%81%A7%E3%83%AB%E3%83%BC%E3%83%AB%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%99%E3%82%8B">htmlでルールを追加する</h3>
+<p>次のプログラムを記述してください</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"ja"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>生年月日入力<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"main.js"</span> <span class="hljs-attr">defer</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>生年月日の入力<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"month"</span>&gt;</span>月:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"number"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"month"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"月を入力してください"</span> <span class="hljs-attr">min</span>=<span class="hljs-string">"1"</span> <span class="hljs-attr">max</span>=<span class="hljs-string">"12"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"day"</span>&gt;</span>日:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"number"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"day"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"日を入力してください"</span> <span class="hljs-attr">min</span>=<span class="hljs-string">"1"</span> <span class="hljs-attr">max</span>=<span class="hljs-string">"31"</span>&gt;</span>
+        
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"errorInput()"</span>&gt;</span>入力<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<p>新しく<code>label</code>タグを追加していますが、なにか別のタグと一緒に使うタグで、ボタンや入力ボックスなどと一緒に使うことができます。
+<code>for</code>で記述されているidを持つタグにカーソルを移動します。</p>
+<p><code>input</code>タグに新たな属性を加えました。</p>
+<p><strong>type</strong>属性は、その入力ボックスに記述できる値を設定しています。<em>number</em>であれば、数字以外を入力できないようにしています。</p>
+<p>また、入力規則を設定できます。<em>max</em>と<em>min</em>属性で、最小値と最大値を設定しています。</p>
+<p>このように、HTMLのみで、入力ルールを設けて、値を制御することができます。</p>
+<h3 id="%E5%85%A5%E5%8A%9B%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%E3%82%92%E5%A4%89%E3%81%88%E3%82%8B">入力する方法を変える</h3>
+<p>先程の方法は、大前提入力ボックスを使用する方法でしたので、キーボードで入力する前提でした。</p>
+<p>しかし、キーボードで入力することは、スマートフォンなどでは、煩わしい方法です。また、HP作成の際に入力規則をつけ忘れるなんて、ありそうな話ですよね。</p>
+<p>そこで、別の入力方式を実装します。</p>
+<p><strong>ドロップダウンメニュー</strong></p>
+<p>クリックすると、選択肢が複数出てきて、その中から選択するという方式です。</p>
+<p>次のコードを今のindex.htmlに追加で記述してみてください。</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"pet-select"</span>&gt;</span>あなたの飼いたいペットは？:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"pets"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"pet-select"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">""</span>&gt;</span>選択してください<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"dog"</span>&gt;</span>犬<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"cat"</span>&gt;</span>猫<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"hamster"</span>&gt;</span>ハムスター<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"parrot"</span>&gt;</span>インコ<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"spider"</span>&gt;</span>蜘蛛<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"goldfish"</span>&gt;</span>金魚<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+</div></code></pre>
+<p>このように、<strong>select</strong>タグと<strong>option</strong>タグで追加することができます。</p>
+
+</body>
+</html>
