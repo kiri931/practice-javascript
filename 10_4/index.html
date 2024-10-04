@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>生年月日入力</title>
+        <script src="main.js" defer></script>
+    </head>
+    <body>
+        <h1>生年月日の入力</h1>
+
+        <label for="month">月:</label>
+        <input type="number" id="month" placeholder="月を入力してください" min="1" max="12">
+        <label for="day">日:</label>
+        <input type="number" id="day" placeholder="日を入力してください" min="1" max="31">
+        
+        <button onclick="errorInput()">入力</button>
+
+        <div></div>
+
+        <label for="pet-select">あなたの飼いたいペットは？:</label>
+
+        <select name="pets" id="pet-select">
+            <option value="">選択してください</option>
+            <option value="dog">犬</option>
+            <option value="cat">猫</option>
+            <option value="hamster">ハムスター</option>
+            <option value="parrot">インコ</option>
+            <option value="spider">蜘蛛</option>
+            <option value="goldfish">金魚</option>
+        </select>
+        変更
+    </body>
+</html>
