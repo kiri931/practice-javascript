@@ -236,3 +236,90 @@ if文での分岐です。記述方法がC言語と同じですので、詳し�
 ~~~
 
 このように、**select**タグと**option**タグで追加することができます。
+
+### 日付のプルダウンリストを作成しよう
+
+では、実際に作成していきましょう。
+といっても、以下のように変更するだけで簡単に実装できます。
+
+~~~html
+<label for="month2">月:</label>
+
+<select id="month2">
+  <option value="">選択してください</option>
+  <option value=1>1</option>
+  <option value=2>2</option>
+  <option value=3>3</option>
+  <option value=4>4</option>
+  <option value=5>5</option>
+  <option value=6>6</option>
+  <option value=7>7</option>
+  <option value=8>8</option>
+  <option value=9>9</option>
+  <option value=10>10</option>
+  <option value=11>11</option>
+  <option value=12>12</option>
+</select>
+~~~
+
+では、次は日についても同様に作成して下さい。
+
+と言われても時間がかかるし、少し面倒ですよね。
+
+このようなときは、JavaScriptでHTMLのタグを作成することができます。
+
+## HTMLタグをJavaScriptで作成しよう
+
+以下のように入力してください。
+
+
+~~~html
+<!--index.html-->
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>HTMLエレメント作成</title>
+        <script src="main.js" defer></script>
+    </head>
+    <body>
+        <h1>文字を追加してみよう</h1>
+        <p id = "pTag">HTMLのタグのことをエレメント(要素)という</p>
+    </body>
+</html>
+~~~
+
+~~~js
+//main.js
+const txt = document.createElement('strong');
+txt.textContent = "追加される文字";
+document.querySelector("body").appendChild(txt);
+~~~
+
+では、連続的にエレメントを追加しよう
+
+~~~js
+const pTag = document.getElementById("pTag");
+
+for(let i = 0; i<100;i++){
+    const num = document.createElement("span");
+    num.textContent=i;
+    pTag.appendChild(num);
+}
+~~~
+
+一見わかりにくいように見えるので、
+
+~~~css
+span {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 2px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #555;
+    transition: background-color 0.3s, color 0.3s;
+}
+~~~
