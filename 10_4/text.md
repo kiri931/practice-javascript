@@ -296,7 +296,22 @@ txt.textContent = "追加される文字";
 document.querySelector("body").appendChild(txt);
 ~~~
 
-では、連続的にエレメントを追加しよう
+`const txt = document.createElement('strong');`
+`strong`タグのエレメントを作成して、txtという定数に情報を格納しています。
+
+`txt.textContent = "追加される文字";`
+作成した`strong`タグのエレメントに表示する文字を記述しています。
+
+`document.querySelector("body").appendChild(txt);`
+bodyタグの中にtxtに格納された情報を持つエレメントを追加しています。
+`.appendChild(txt)`この部分で、エレメントの中の最後にエレメントを追加しています。
+
+実際に表示されているHTMLの情報は、ブラウザのコンソールの画面のタグをElementsに切り替えると確認できます。
+
+## エレメントを連続的に生成しよう
+
+では、連続的にエレメントを追加しよう。`for`を使うことで簡単に作成できます。使い方はC言語と同じです。
+以下のコードをmain.jsに追加してください。
 
 ~~~js
 const pTag = document.getElementById("pTag");
@@ -308,7 +323,7 @@ for(let i = 0; i<100;i++){
 }
 ~~~
 
-一見わかりにくいように見えるので、
+一見わかりにくいように見えるので、style.cssを追加する。
 
 ~~~css
 span {
@@ -323,3 +338,77 @@ span {
     transition: background-color 0.3s, color 0.3s;
 }
 ~~~
+
+## 生年月日のプルダウンを作成しよう
+
+index.htmlとmain.jsを以下のように編集してください。
+
+~~~html
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>生年月日入力</title>
+        <script src="main.js" defer></script>
+    </head>
+    <body>
+        <h1>生年月日の入力</h1>
+
+        <label for="month1">月:</label>
+        <input type="number" id="month1" placeholder="月を入力してください" min="1" max="12">
+        
+<div></div>
+
+        <label for ="month2">月:</label>
+        <select id="month2"></select>
+
+        <div></div>
+
+        <label for="day">日:</label>
+        <input type="number" id="day" placeholder="日を入力してください" min="1" max="31">
+        
+        <button onclick="errorInput()">入力</button>
+        
+        <div></div>
+
+        <label for="pet-select">あなたの飼いたいペットは？:</label>
+        <select name="pets" id="pet-select">
+            <option value="">選択してください</option>
+            <option value="dog">犬</option>
+            <option value="cat">猫</option>
+            <option value="hamster">ハムスター</option>
+            <option value="parrot">インコ</option>
+            <option value="spider">蜘蛛</option>
+            <option value="goldfish">金魚</option>
+        </select>
+
+
+    </body>
+</html>
+~~~
+~~~js
+function errorInput(){
+    const month = document.getElementById("month").value;
+    const day = document.getElementById("day").value;
+    if(month<1 || month>12){
+        alert("適切な値ではありません");
+        return
+    }
+    console.log("Month:", month, "Day:", day);
+}
+
+const monthSelect = document.getElementById("month2");
+monthSelectList();
+function monthSelectList(){
+    for (let i=1;i<=12;i++){
+        let option = document.createElement('option');
+        option.value = i;
+        option.textContent = i + "月";
+        monthSelect.appendChild(option);
+    }
+}
+~~~
+
+これでプルダウンを作ることができます。
+
+では、
