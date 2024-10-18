@@ -1,0 +1,17 @@
+p{
+    font-size: 200%;
+}
+hutozi{
+    font-weight: bold;
+}
+a:link{
+    color:pink;
+}
+
+a:visited{
+    color: green;
+}
+
+li em {
+    color: rgb(153, 51, 51);
+  }
