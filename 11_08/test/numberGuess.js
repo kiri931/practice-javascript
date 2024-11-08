@@ -1,7 +1,5 @@
-
 function NumberGuessGame(){
     const randomNumber = Math.floor(Math.random()*100)+1;
-    // console.log(randomNumber);
     let message = document.createElement("p");
     let input = document.createElement("input");
     input.type = "number";
