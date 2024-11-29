@@ -35,7 +35,18 @@
             <option value="spider">蜘蛛</option>
             <option value="goldfish">金魚</option>
         </select>
+        <div id="month-select"></div>
 
 
-    </body>
+
+   
+    <script>
+       let p = document.getElementById("hyoji");
+       let select = document.getElementById("pet-select");
+
+        select.addEventListener("change", function () {
+            p.textContent = select.value;
+        });
+     </script>
+      </body>
 </html>

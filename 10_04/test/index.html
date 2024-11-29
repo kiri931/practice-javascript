@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星座セレクタ</title>
+</head>
+<body>
+    <label for="zodiac-select">星座を選択してください:</label>
+    <div id="zodiac-select-container"></div>
+
+    <script>
+        // 星座リスト
+        const zodiacSigns = [
+            "おひつじ座",
+            "おうし座",
+            "ふたご座",
+            "かに座",
+            "しし座",
+            "おとめ座",
+            "てんびん座",
+            "さそり座",
+            "いて座",
+            "やぎ座",
+            "みずがめ座",
+            "うお座"
+        ];
+
+        // <select> 要素を作成
+        const zodiacSelect = document.createElement("select");
+        zodiacSelect.id = "zodiac-select";
+
+        // プレースホルダーとして選択肢を追加
+        const placeholder = document.createElement("option");
+        placeholder.value = "";
+        placeholder.textContent = "選択してください";
+        placeholder.disabled = true;
+        placeholder.selected = true;
+        zodiacSelect.appendChild(placeholder);
+
+        // 星座リストをオプションとして追加
+        zodiacSigns.forEach(sign => {
+            const option = document.createElement("option");
+            option.value = sign; // value 属性に星座名を設定
+            option.textContent = sign; // 表示テキストに星座名を設定
+            zodiacSelect.appendChild(option);
+        });
+
+        // 作成したセレクタを DOM に追加
+        const container = document.getElementById("zodiac-select-container");
+        container.appendChild(zodiacSelect);
+    </script>
+</body>
+</html>
