@@ -24,7 +24,9 @@
         <button onclick="errorInput()">入力</button>
 
         <div></div>
-
+        <input type="number" id="quantity" min="10" max="100" step="5" value="20">
+        <div></div>
+        
         <label for="pet-select">あなたの飼いたいペットは？:</label>
 
         <select name="pets" id="pet-select">
@@ -36,6 +38,17 @@
             <option value="spider">蜘蛛</option>
             <option value="goldfish">金魚</option>
         </select>
-        変更
+        <p id="want"></p>
+        <script>
+            let p = document.getElementById("want");
+            let select = document.getElementById("pet-select");
+            select.addEventListener("change", function () {
+              p.textContent = select.value;
+            });
+          </script>
+          
+
+
+        <select id="month"></select>
     </body>
 </html>

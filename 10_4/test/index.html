@@ -1,0 +1,34 @@
+
+<h1>hello</h1>
+
+<div id="month-select">aiueo</div>
+
+<div id="zodiac-select-container"></div>
+
+<script>
+
+const month = document.createElement("select")
+month.id = "month"
+for (let i=1;i<=12;i++){
+    let option = document.createElement('option');
+    option.value = i;
+    option.textContent = i + "月";
+    month.appendChild(option);
+}
+
+const monthSelect = document.getElementById("month-select")
+monthSelect.appendChild(month)
+const zodiacSigns = ["おひつじ座","おうし座","ふたご座","かに座","しし座","おとめ座",        "てんびん座","さそり座","いて座","やぎ座","みずがめ座","うお座"];
+
+const zodiac= document.createElement("select")
+zodiac.id = "zodiac"
+for (let i=0;i<12;i++){
+    let option = document.createElement('option');
+    option.value = i;
+    option.textContent = zodiacSigns[i];
+    zodiac.appendChild(option);
+}
+const zodiacSelect = document.getElementById("zodiac-select-container")
+zodiacSelect.appendChild(zodiac)
+
+</script>

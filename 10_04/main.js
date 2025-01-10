@@ -12,7 +12,7 @@ const monthSelect = document.getElementById("month2");
 monthSelectList();
 function monthSelectList(){
     for (let i=1;i<=12;i++){
-        let option = document.createElement('option');
+        const option = document.createElement('option');
         option.value = i;
         option.textContent = i + "月";
         monthSelect.appendChild(option);

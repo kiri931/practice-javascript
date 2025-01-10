@@ -1,8 +1,8 @@
 //クリックされたら動作する
 
 function errorInput(){
-    console.log(document.getElementById("month").value)
-    console.log(document.getElementById("day").value)
+    console.log(document.getElementById("month").textContent)
+    console.log(document.getElementById("day").textContent)
 
     const month = document.getElementById("month").value;
     const day = document.getElementById("day").value
