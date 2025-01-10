@@ -18,3 +18,4 @@ function monthSelectList(){
         monthSelect.appendChild(option);
     }
 }
+

@@ -46,7 +46,19 @@
               p.textContent = select.value;
             });
           </script>
-          
+                  <div id="month-select"></div>
+
+
+
+   
+    <script>
+       let p = document.getElementById("hyoji");
+       let select = document.getElementById("pet-select");
+
+        select.addEventListener("change", function () {
+            p.textContent = select.value;
+        });
+     </script>
 
 
         <select id="month"></select>
