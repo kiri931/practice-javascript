@@ -45,3 +45,11 @@ function ClickCounterGame(){
     gameContainer.appendChild(counter);
 }
 ClickCounterGame();
+
+function startNumberGuessGame() {
+    const randomNumber = Math.floor(Math.random() * 100) + 1;
+    let message = document.createElement('p');
+    let input = document.createElement('input');
+    input.type = 'number';
+    input.placeholder = '好きな数字を入力してください (1-100)';
+}
