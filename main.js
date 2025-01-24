@@ -56,7 +56,23 @@ function startNumberGuessGame(){
     input.type = "number";
     input.placeholder = "好きな数字を入力してください (1 ~ 100)"
     gameContainer.appendChild(message);
-    gameContainer.appendChild(input);
+    gameContainer.appendChild(input)
+
+    let button = document.createElement("button");
+    button.textContent = "確認"
+
+    button.addEventListener("click",function(){
+        const val = parseInt(input.value)    
+        if (randomNumber == val) {
+            message.textContent = "正解"
+        }else if (randomNumber > val) {
+            message.textContent = "小さい"
+        }else{
+            message.textContent = "大きい"
+        }
+    })
+
+    gameContainer.appendChild(button);
 }
 
 startNumberGuessGame();
