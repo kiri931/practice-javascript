@@ -14,7 +14,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 operatorUsed = false;
             } else if (value === "=") {
                 try {
-                    currentInput = eval(currentInput).toString();
+                    let formattedInput = currentInput
+                        .replace(/sin\(/g, "Math.sin(")
+                        .replace(/cos\(/g, "Math.cos(")
+                        .replace(/tan\(/g, "Math.tan(")
+                        .replace(/log\(/g, "Math.log10(")
+                        .replace(/ln\(/g, "Math.log(")
+                        .replace(/√/g, "Math.sqrt")
+                        .replace(/x²/g, "**2")
+                        .replace(/xʸ/g, "**");
+
+                    currentInput = eval(formattedInput).toString();
                     operatorUsed = false;
                 } catch {
                     currentInput = "エラー";

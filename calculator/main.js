@@ -3,10 +3,13 @@ document.addEventListener("DOMContentLoaded", function() {
     const buttonContainer = document.getElementById("button-container");
     
     const buttons = [
-        "1", "2", "3", "+",
+        "7", "8", "9", "+",
         "4", "5", "6", "-",
-        "7", "8", "9", "*",
-        "C", "0", "=", "/"
+        "1", "2", "3", "*",
+        "0", ".", "=", "/",
+        "C", "(", ")", "%",
+        "sin", "cos", "tan", "sqrt",
+        "log", "ln", "exp", "^"
     ];
     
     buttons.forEach(text => {
@@ -30,7 +33,7 @@ class Calculator {
             this.value = "";
         } else if (input === "=") {
             try {
-                this.value = eval(this.value).toString();
+                this.value = this.evaluateExpression(this.value).toString();
             } catch (e) {
                 this.value = "Error";
             }
@@ -38,6 +41,9 @@ class Calculator {
             this.value += input;
         }
         this.updateDisplay();
+    }
+    evaluateExpression(expression) {
+        return Function(`'use strict'; return (${expression.replace('^', '**')})`)();
     }
     updateDisplay() {
         this.element.textContent = this.value;

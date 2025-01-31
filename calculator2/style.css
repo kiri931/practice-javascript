@@ -8,7 +8,7 @@ body {
 }
 
 .calculator {
-    width: 300px;
+    width: 350px;
     background: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -61,5 +61,10 @@ body {
 
 .clear {
     background: #dc3545;
+    color: white;
+}
+
+.func {
+    background: #007bff;
     color: white;
 }

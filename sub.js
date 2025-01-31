@@ -1,15 +1,16 @@
-const gameSelector = document.getElementById('game-select');
-gameSelector.addEventListener('change', function() {
-  gameContainer.innerHTML = '';
-  switch (gameSelector.value) {
-    case 'number-guess':
-      startNumberGuessGame();
-      break;
-    case 'clicker':
-      ClickCounterGame();
-      break;
-  }
-});
+const gameSelector = document.getElementById("game-select");
+const gameContainer = document.getElementById("game-container");
+gameSelector.addEventListener("change", function(){
+    gameContainer.innerHTML = "";
+    switch(gameSelector.value){
+        case "number-guess":
+            startNumberGuessGame();
+            break;
+        case "clicker":
+            ClickCounterGame();
+            break;
+    }
+})
 
 function ClickCounterGame(){
     let count = 0;

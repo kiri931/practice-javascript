@@ -3,13 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>シンプル電卓</title>
+    <title>関数電卓</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="calculator">
         <input type="text" id="display" disabled>
         <div class="buttons">
+            <button class="btn func" data-value="sin(">sin</button>
+            <button class="btn func" data-value="cos(">cos</button>
+            <button class="btn func" data-value="tan(">tan</button>
+            <button class="btn func" data-value="log(">log</button>
+
+            <button class="btn func" data-value="ln(">ln</button>
+            <button class="btn func" data-value="Math.PI">π</button>
+            <button class="btn func" data-value="Math.E">e</button>
+            <button class="btn func" data-value="Math.sqrt(">√</button>
+
             <button class="btn" data-value="7">7</button>
             <button class="btn" data-value="8">8</button>
             <button class="btn" data-value="9">9</button>
@@ -29,6 +39,11 @@
             <button class="btn" data-value=".">.</button>
             <button class="btn clear" data-value="C">C</button>
             <button class="btn operator" data-value="+">+</button>
+
+            <button class="btn func" data-value="Math.pow(,2)">x²</button>
+            <button class="btn func" data-value="Math.pow(">xʸ</button>
+            <button class="btn func" data-value="(">(</button>
+            <button class="btn func" data-value=")">)</button>
 
             <button class="btn equal" data-value="=">=</button>
         </div>
