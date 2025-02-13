@@ -1,4 +1,22 @@
 const gameSelector = document.getElementById('game-select');
+const select = document.createElement('select');
+select.name = 'games';
+select.id = 'game-select';
+const options = [
+    {value:"",text:"--ゲームを選択してください--"},
+    {value:'clicker',text:"クリッカーゲーム"},
+    {value:'number-guess',text:"数当てゲーム"}
+    ];
+options.forEach(optionData => {
+    const option = document.createElement('option');
+    option.value = optionData.value;
+    option.textContent = optionData.text;
+    select.appendChild(option);
+});
+gameSelector.appendChild(select);
+
+
+
 gameSelector.addEventListener('change', function() {
   gameContainer.innerHTML = '';
   switch (gameSelector.value) {
