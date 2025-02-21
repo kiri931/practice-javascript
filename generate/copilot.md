@@ -326,3 +326,4 @@ const cities = ['Tokyo', 'Kyoto', 'Osaka'];
 
 const cityLengths = cities.map(city => city.length);
 ```
+
